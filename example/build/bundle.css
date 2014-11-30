@@ -1,0 +1,161 @@
+/**
+ * base styles
+ */
+
+body {
+  color: #222;
+  font-family: Arial;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #3498db;
+  outline: none;
+  text-decoration: underline;
+}
+
+header {
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 230px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+footer {
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 230px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+section.content {
+  -webkit-flex-basis: 60%;
+      -ms-flex-preferred-size: 60%;
+          flex-basis: 60%;
+}
+
+.github-button {
+  width: 75px;
+  height: 30px;
+}
+
+@media(max-width: 1000px) {
+  section.content {
+    -webkit-flex-basis: 80%;
+        -ms-flex-preferred-size: 80%;
+            flex-basis: 80%;
+  }
+}
+
+@media(max-width: 500px) {
+  section.content {
+    -webkit-flex-basis: 90%;
+        -ms-flex-preferred-size: 90%;
+            flex-basis: 90%;
+  }
+}
+
+/**
+ * custom styles
+ */
+
+.example {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.example iframe {
+  max-width: 100%;
+}
+
+.changeUrl {
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+  text-align: center;
+  margin-top: 2em;
+}
+
+.changeUrl button {;
+  padding: 1em 4em;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #168add), color-stop(100%, #007ee5));
+  border: 1px solid #0c6ebe;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.changeUrl button:hover,
+.changeUrl button:focus {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #168eef), color-stop(100%, #007ee5));
+  outline: none;
+}
+
+.changeUrl button:active {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b80d3), color-stop(100%, #0a74cb));
+}
