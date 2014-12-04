@@ -2,6 +2,10 @@
  * base styles
  */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: #222;
   font-family: Arial;
@@ -17,11 +21,14 @@ body {
   -webkit-align-items: flex-start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-flex-flow: row wrap;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  margin: 0;
-  padding: 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 
 a {
@@ -40,74 +47,50 @@ header {
   -webkit-flex-basis: 100%;
       -ms-flex-preferred-size: 100%;
           flex-basis: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 230px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
   text-align: center;
+  margin-bottom: 2em;
 }
 
 header h1 {
+  margin: 2.2em 0.5em 0.9em 0.5em;
   font-size: 2.5em;
   font-weight: bold;
   letter-spacing: 5px;
   text-transform: uppercase;
 }
 
+header p {
+  letter-spacing: 1px;
+}
+
 footer {
   -webkit-flex-basis: 100%;
       -ms-flex-preferred-size: 100%;
           flex-basis: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 230px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
   text-align: center;
 }
 
-section.content {
-  -webkit-flex-basis: 60%;
-      -ms-flex-preferred-size: 60%;
-          flex-basis: 60%;
-}
-
 .github-button {
+  margin: 6em 0;
   width: 75px;
   height: 30px;
 }
 
-@media(max-width: 1000px) {
-  section.content {
-    -webkit-flex-basis: 80%;
-        -ms-flex-preferred-size: 80%;
-            flex-basis: 80%;
-  }
-}
-
-@media(max-width: 500px) {
-  section.content {
-    -webkit-flex-basis: 90%;
-        -ms-flex-preferred-size: 90%;
-            flex-basis: 90%;
-  }
+.content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-basis: 60%;
+      -ms-flex-preferred-size: 60%;
+          flex-basis: 60%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
 }
 
 /**
@@ -158,4 +141,24 @@ section.content {
 
 .changeUrl button:active {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b80d3), color-stop(100%, #0a74cb));
+}
+
+/**
+ * responsive things
+ */
+
+@media(max-width: 1000px) {
+  .content {
+    -webkit-flex-basis: 80%;
+        -ms-flex-preferred-size: 80%;
+            flex-basis: 80%;
+  }
+}
+
+@media(max-width: 700px) {
+  .content {
+    -webkit-flex-basis: 90%;
+        -ms-flex-preferred-size: 90%;
+            flex-basis: 90%;
+  }
 }
