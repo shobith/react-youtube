@@ -68,13 +68,21 @@ var YouTube = React.createClass({
   },
 
   /**
-   * If the `url` has changed, load it.
+   * If the `url/startSeconds/endSeconds`has changed, load it.
    *
    * @param {Object} nextProps
    */
 
   componentWillUpdate: function(nextProps) {
     if (this.props.url !== nextProps.url) {
+      this._loadUrl(nextProps.url);
+    }
+
+    if (this.props.startSeconds !== nextProps.startSeconds) {
+      this._loadUrl(nextProps.url);
+    }
+
+    if (this.props.endSeconds !== nextProps.endSeconds) {
       this._loadUrl(nextProps.url);
     }
   },
