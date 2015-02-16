@@ -44,7 +44,7 @@ var YouTube = React.createClass({
   getDefaultProps: function() {
     return {
       id: 'react-yt-player',
-      autoplay: true,
+      autoplay: false,
       loop: false,
       onPlayerReady: noop,
       onVideoReady: noop,
