@@ -28,23 +28,29 @@ var YouTube = React.createClass({
     // autoplay the video when loaded.
     autoplay: React.PropTypes.bool,
 
+    // play the video in a loop.
+    loop: React.PropTypes.bool,
+
     // event subscriptions
     onPlayerReady: React.PropTypes.func,
     onVideoReady: React.PropTypes.func,
     onPlay: React.PropTypes.func,
     onPause: React.PropTypes.func,
-    onEnd: React.PropTypes.func
+    onEnd: React.PropTypes.func,
+    startSeconds: React.PropTypes.number,
+    endSeconds: React.PropTypes.number
   },
 
   getDefaultProps: function() {
     return {
       id: 'react-yt-player',
-      autoplay: false,
+      autoplay: true,
+      loop: false,
       onPlayerReady: noop,
       onVideoReady: noop,
       onPlay: noop,
       onPause: noop,
-      onEnd: noop
+      onEnd: noop,
     };
   },
 
@@ -52,7 +58,7 @@ var YouTube = React.createClass({
    * Once YouTube API had loaded, a new YT.Player
    * instance will be created and its events bound.
    */
-  
+
   componentDidMount: function() {
     var _this = this;
 
@@ -101,12 +107,17 @@ var YouTube = React.createClass({
    *
    * @param {String} url
    */
-  
+
   _loadUrl: function(url) {
+    var params = {
+      'videoId': getYouTubeId(url),
+      'startSeconds': this.props.startSeconds,
+      'endSeconds': this.props.endSeconds
+    };
     if (this.props.autoplay) {
-      internalPlayer.loadVideoById(getYouTubeId(url));
+      internalPlayer.loadVideoById(params);
     } else {
-      internalPlayer.cueVideoById(getYouTubeId(url));
+      internalPlayer.cueVideoById(params);
     }
   },
 
@@ -117,7 +128,7 @@ var YouTube = React.createClass({
    * Is exposed in the global namespace under a random
    * name, see `_globalizeEventHandlers`
    */
-  
+
   _handlePlayerReady: function() {
     this.props.onPlayerReady();
     this._loadUrl(this.props.url);
@@ -133,15 +144,18 @@ var YouTube = React.createClass({
    *
    * @param {Object} event
    */
-  
+
   _handlePlayerStateChange: function(event) {
     switch(event.data) {
 
       case window.YT.PlayerState.CUED:
         this.props.onVideoReady();
         break;
-      
-      case window.YT.PlayerState.ENDED: 
+
+      case window.YT.PlayerState.ENDED:
+        if (this.props.loop === true) {
+          this._loadUrl(this.props.url);
+        }
         this.props.onEnd();
         break;
 
@@ -153,7 +167,7 @@ var YouTube = React.createClass({
         this.props.onPause();
         break;
 
-      default: 
+      default:
         return;
     }
   },
